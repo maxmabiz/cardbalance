@@ -334,6 +334,14 @@
       gap: 16px;
     }
 
+    .table .ops.ops-2row {
+      display: grid;
+      grid-template-columns: max-content max-content;
+      gap: 6px 16px;
+      align-items: center;
+      white-space: nowrap;
+    }
+
     .table .link {
       color: var(--primary);
       cursor: pointer;
@@ -401,6 +409,142 @@
 
     .modal.modal-lg {
       max-width: 880px;
+    }
+
+    .modal.modal-md {
+      max-width: 720px;
+    }
+
+    .secret-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+
+    .secret-form-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .secret-form-item label {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .secret-form-item label .required {
+      color: #ff4d4f;
+      margin-right: 2px;
+    }
+
+    .secret-form-item input,
+    .secret-form-item select,
+    .secret-form-item textarea {
+      width: 100%;
+      height: 32px;
+      padding: 4px 11px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .secret-form-item textarea {
+      height: auto;
+      min-height: 88px;
+      padding: 8px 11px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .secret-form-item input:focus,
+    .secret-form-item select:focus,
+    .secret-form-item textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.12);
+    }
+
+    .secret-form-item input::placeholder,
+    .secret-form-item textarea::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .secret-bind-box {
+      margin-top: 20px;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      background: #fafafa;
+      padding: 16px 16px 8px;
+    }
+
+    .secret-bind-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .secret-bind-head .title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .secret-bind-tag {
+      display: inline-flex;
+      align-items: center;
+      height: 22px;
+      padding: 0 8px;
+      border-radius: 4px;
+      background: #e6f4ff;
+      color: #1677ff;
+      font-size: 12px;
+      line-height: 22px;
+    }
+
+    .secret-bind-box .secret-form-item {
+      margin-bottom: 12px;
+    }
+
+    .secret-form-item.secret-form-full {
+      grid-column: 1 / -1;
+    }
+
+    .secret-radio-group {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-height: 32px;
+    }
+
+    .secret-radio {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .secret-radio input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .secret-form-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .daily-summary {
@@ -893,6 +1037,205 @@
       min-height: 100px;
     }
 
+    /* ========== BI ========== */
+    .bi-tabs {
+      display: inline-flex;
+      padding: 4px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      gap: 4px;
+    }
+
+    .bi-tab {
+      border: none;
+      background: transparent;
+      height: 32px;
+      padding: 0 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .bi-tab:hover {
+      color: var(--primary);
+    }
+
+    .bi-tab.active {
+      background: #fff;
+      color: var(--primary);
+      font-weight: 500;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .bi-panel {
+      display: none;
+    }
+
+    .bi-panel.active {
+      display: block;
+    }
+
+    .bi-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .bi-kpi {
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .bi-kpi-label {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: 8px;
+    }
+
+    .bi-kpi-value {
+      font-size: 22px;
+      font-weight: 650;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+    }
+
+    .bi-kpi-value.accent {
+      color: var(--primary);
+    }
+
+    .bi-chart-card {
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 16px 16px 8px;
+      margin-bottom: 16px;
+    }
+
+    .bi-chart-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .bi-chart-wrap {
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .bi-chart-wrap svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .bi-chart-empty {
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-tertiary);
+      font-size: 14px;
+    }
+
+    .slash-asof {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: #fffbe6;
+      border: 1px solid #ffe58f;
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .slash-asof strong {
+      font-weight: 600;
+    }
+
+    .slash-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 960px;
+    }
+
+    .slash-table th {
+      background: #fa8c16;
+      color: #fff;
+      font-weight: 600;
+      padding: 10px 12px;
+      text-align: center;
+      border: 1px solid #d46b08;
+      white-space: nowrap;
+    }
+
+    .slash-table td {
+      padding: 9px 12px;
+      border: 1px solid #f0f0f0;
+      text-align: center;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .slash-table td.num {
+      text-align: right;
+    }
+
+    .slash-table tbody tr:hover td {
+      background: #fff7e6;
+    }
+
+    .slash-table .slash-total td {
+      background: #ffe7ba;
+      font-weight: 650;
+    }
+
+    .slash-table .year-cell {
+      background: #fffaf0;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    .bi-chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 16px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .bi-chart-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bi-chart-legend i {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    @media (max-width: 900px) {
+      .bi-kpi-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     /* Toast */
     .toast {
       position: fixed;
@@ -1054,6 +1397,59 @@
       padding: 12px 16px;
     }
 
+    .table-toolbar.toolbar-start {
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 12px 16px;
+      flex-wrap: wrap;
+    }
+
+    .table .link.link-danger {
+      color: #ff4d4f;
+    }
+
+    .table .link.link-danger:hover {
+      color: #cf1322;
+    }
+
+    .table .link.link-disabled {
+      color: rgba(0, 0, 0, 0.25);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .filter-grid-dense {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .filter-date-range {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-date-range input {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .filter-date-range .range-sep {
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1200px) {
+      .filter-grid-dense {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .filter-grid-dense {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     .amount-green {
       color: #52c41a !important;
       font-weight: 600;
@@ -1200,15 +1596,32 @@
             </svg>
             <span>Card返点明细</span>
           </div>
+          <div class="side-menu-item" data-page="bi" onclick="switchPage('bi')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 11.5l3-3 2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2.5 13.5h11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span>BI统计</span>
+          </div>
         </div>
-        <div class="sidebar-footer">v1.0.0</div>
+        <div class="side-menu-group">
+          <div class="side-menu-title">财务对账</div>
+          <div class="side-menu-item" data-page="secret" onclick="switchPage('secret')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect x="3" y="7" width="10" height="6.5" rx="1.2" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span>密钥信息配置</span>
+          </div>
+        </div>
+        <div class="sidebar-footer">v1.1.0</div>
       </aside>
 
       <div class="main-wrap">
         <div class="breadcrumb-bar">
           <span>Fund</span>
           <span class="sep">/</span>
-          <span>信用卡管理</span>
+          <span id="breadcrumbModule">信用卡管理</span>
           <span class="sep">/</span>
           <span class="current" id="breadcrumbCurrent">Card日消耗</span>
         </div>
@@ -1366,7 +1779,7 @@
           <main class="page-body">
             <div class="page-header">
               <h1 class="page-title">Card返点明细</h1>
-              <p class="page-desc">查询单笔交易返点明细，支持按描述、账户、结算日期筛选</p>
+              <p class="page-desc">查询单笔交易返点明细，支持按描述、账户、结算日期筛选与导出</p>
             </div>
 
             <div class="filter-card">
@@ -1404,7 +1817,14 @@
             </div>
 
             <div class="table-card">
-              <div class="table-toolbar">
+              <div class="table-toolbar toolbar-between">
+                <button type="button" class="btn btn-primary" onclick="exportRebateDetail()">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 2v7M7 9L4.5 6.5M7 9l2.5-2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.5 11.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  </svg>
+                  导出
+                </button>
                 <button class="icon-btn" type="button" title="刷新" aria-label="刷新" onclick="searchDetail()">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M13.5 8A5.5 5.5 0 1 1 11.2 3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
@@ -1541,6 +1961,300 @@
                   <button type="button" class="page-btn" id="dailyPrev" onclick="goDailyPage(-1)">‹</button>
                   <span id="dailyPageNums"></span>
                   <button type="button" class="page-btn" id="dailyNext" onclick="goDailyPage(1)">›</button>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+
+        <!-- Page: BI统计 -->
+        <div class="page-panel" id="page-bi">
+          <main class="page-body">
+            <div class="page-header">
+              <h1 class="page-title">BI统计</h1>
+              <p class="page-desc">基于 Card 日消耗数据，查看日/月消耗趋势与汇总</p>
+            </div>
+
+            <div class="bi-tabs" role="tablist">
+              <button type="button" class="bi-tab active" data-bi-tab="daily" onclick="switchBiTab('daily')">日消耗额度情况</button>
+              <button type="button" class="bi-tab" data-bi-tab="monthly" onclick="switchBiTab('monthly')">月度消耗情况</button>
+              <button type="button" class="bi-tab" data-bi-tab="slash" onclick="switchBiTab('slash')">卡使用情况</button>
+            </div>
+
+            <div class="bi-panel active" id="bi-panel-daily">
+              <div class="filter-card">
+                <form class="filter-grid" onsubmit="return searchBiDaily(event)">
+                  <div class="filter-item">
+                    <label for="biDailyFrom">日期（起）</label>
+                    <input id="biDailyFrom" type="date" />
+                  </div>
+                  <div class="filter-item">
+                    <label for="biDailyTo">日期（止）</label>
+                    <input id="biDailyTo" type="date" />
+                  </div>
+                  <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary">查询</button>
+                    <button type="button" class="btn btn-default" onclick="resetBiDaily()">重置</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="bi-kpi-row" id="biDailyKpi"></div>
+
+              <div class="bi-chart-card">
+                <div class="bi-chart-title">日消耗走势</div>
+                <div class="bi-chart-wrap" id="biDailyChart"></div>
+              </div>
+
+              <div class="table-card">
+                <div class="table-scroll">
+                  <table class="table table-fit">
+                    <thead>
+                      <tr>
+                        <th>日期</th>
+                        <th class="num">日消耗合计</th>
+                        <th class="num">有消耗卡数</th>
+                        <th class="num">单卡日均</th>
+                        <th class="num">较前日变化</th>
+                      </tr>
+                    </thead>
+                    <tbody id="biDailyTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="bi-panel" id="bi-panel-monthly">
+              <div class="filter-card">
+                <form class="filter-grid" onsubmit="return searchBiMonthly(event)">
+                  <div class="filter-item">
+                    <label for="biMonthFrom">月份（起）</label>
+                    <input id="biMonthFrom" type="month" />
+                  </div>
+                  <div class="filter-item">
+                    <label for="biMonthTo">月份（止）</label>
+                    <input id="biMonthTo" type="month" />
+                  </div>
+                  <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary">查询</button>
+                    <button type="button" class="btn btn-default" onclick="resetBiMonthly()">重置</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="bi-kpi-row" id="biMonthlyKpi"></div>
+
+              <div class="bi-chart-card">
+                <div class="bi-chart-title">月度消耗对比</div>
+                <div class="bi-chart-wrap" id="biMonthlyChart"></div>
+              </div>
+
+              <div class="table-card">
+                <div class="table-scroll">
+                  <table class="table table-fit">
+                    <thead>
+                      <tr>
+                        <th>月份</th>
+                        <th class="num">月消耗合计</th>
+                        <th class="num">有消耗天数</th>
+                        <th class="num">日均消耗</th>
+                        <th class="num">有消耗卡数</th>
+                        <th class="num">较上月变化</th>
+                      </tr>
+                    </thead>
+                    <tbody id="biMonthlyTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="bi-panel" id="bi-panel-slash">
+              <div class="filter-card">
+                <form class="filter-grid" onsubmit="return searchBiSlash(event)">
+                  <div class="filter-item">
+                    <label for="biSlashAsOf">统计时间</label>
+                    <input id="biSlashAsOf" type="date" />
+                  </div>
+                  <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary">查询</button>
+                    <button type="button" class="btn btn-default" onclick="resetBiSlash()">重置</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="slash-asof" id="biSlashAsOfLabel">统计时间 —</div>
+
+              <div class="bi-kpi-row" id="biSlashKpi"></div>
+
+              <div class="bi-chart-card">
+                <div class="bi-chart-title">额度与使用走势</div>
+                <div class="bi-chart-legend">
+                  <span><i style="background:#1677ff"></i>信用卡总额度</span>
+                  <span><i style="background:#52c41a"></i>活跃信用卡总额度</span>
+                  <span><i style="background:#fa8c16"></i>活跃信用卡已使用额度</span>
+                </div>
+                <div class="bi-chart-wrap" id="biSlashChart"></div>
+              </div>
+
+              <div class="table-card" style="padding: 16px;">
+                <div class="table-scroll">
+                  <table class="slash-table">
+                    <thead>
+                      <tr>
+                        <th>年份</th>
+                        <th>月份</th>
+                        <th>总信用卡数/张</th>
+                        <th>活跃卡数/张</th>
+                        <th>信用卡总额度</th>
+                        <th>活跃信用卡总额度</th>
+                        <th>活跃信用卡已使用额度</th>
+                      </tr>
+                    </thead>
+                    <tbody id="biSlashTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+
+        <!-- Page: 密钥信息配置 -->
+        <div class="page-panel" id="page-secret">
+          <main class="page-body">
+            <div class="page-header">
+              <h1 class="page-title">密钥信息配置</h1>
+              <p class="page-desc">配置支付账户密钥与同步信息，支持筛选、同步与导出</p>
+            </div>
+
+            <div class="filter-card">
+              <form class="filter-grid filter-grid-dense" id="secretFilterForm" onsubmit="return searchSecret(event)">
+                <div class="filter-item">
+                  <label for="secretPlatform">支付平台</label>
+                  <select id="secretPlatform">
+                    <option value="">请选择支付平台</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label for="secretAlias">账户别名</label>
+                  <select id="secretAlias">
+                    <option value="">请选择账户别名</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label for="secretEntity">主体信息</label>
+                  <select id="secretEntity">
+                    <option value="">请选择主体信息</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label for="secretNature">账户性质</label>
+                  <select id="secretNature">
+                    <option value="">请选择账户性质</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label for="secretPurpose">用途</label>
+                  <select id="secretPurpose">
+                    <option value="">请选择用途</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label for="secretAccount">账号</label>
+                  <input id="secretAccount" type="text" placeholder="请输入账号" />
+                </div>
+                <div class="filter-item">
+                  <label for="secretStatus">状态</label>
+                  <select id="secretStatus">
+                    <option value="">请选择状态</option>
+                    <option value="启用">启用</option>
+                    <option value="停用">停用</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label for="secretConfigType">配置类别</label>
+                  <select id="secretConfigType">
+                    <option value="">请选择配置类别</option>
+                    <option value="静态">静态</option>
+                    <option value="API">API</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label>创建时间</label>
+                  <div class="filter-date-range">
+                    <input id="secretCreatedFrom" type="date" />
+                    <span class="range-sep">~</span>
+                    <input id="secretCreatedTo" type="date" />
+                  </div>
+                </div>
+                <div class="filter-item">
+                  <label>最近同步时间</label>
+                  <div class="filter-date-range">
+                    <input id="secretSyncFrom" type="date" />
+                    <span class="range-sep">~</span>
+                    <input id="secretSyncTo" type="date" />
+                  </div>
+                </div>
+                <div class="filter-actions filter-actions-end">
+                  <button type="submit" class="btn btn-primary">搜索</button>
+                  <button type="button" class="btn btn-default" onclick="resetSecretFilter()">重置</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="table-card">
+              <div class="table-toolbar toolbar-start">
+                <button type="button" class="btn btn-primary" onclick="syncSecretAll()">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M11.5 7A4.5 4.5 0 1 1 9.4 3.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M9.2 2.2v2h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  立即同步一次
+                </button>
+                <button type="button" class="btn btn-default" onclick="addSecretAccount()">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 2.5v9M2.5 7h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  </svg>
+                  新增账户
+                </button>
+                <button type="button" class="btn btn-default" onclick="exportSecretData()">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 2v7M7 9L4.5 6.5M7 9l2.5-2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.5 11.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  </svg>
+                  导出数据
+                </button>
+              </div>
+
+              <div class="table-scroll">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>支付平台</th>
+                      <th>账户性质</th>
+                      <th>用途</th>
+                      <th>主体信息</th>
+                      <th>账户别名</th>
+                      <th>账号</th>
+                      <th>配置类别</th>
+                      <th>时区</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="secretTableBody"></tbody>
+                </table>
+              </div>
+
+              <div class="table-footer">
+                <span id="secretTotalText">共 0 条记录</span>
+                <div class="pagination">
+                  <select class="page-size" id="secretPageSize" onchange="changeSecretPageSize()">
+                    <option value="10">10 条/页</option>
+                    <option value="20" selected>20 条/页</option>
+                    <option value="50">50 条/页</option>
+                  </select>
+                  <button type="button" class="page-btn" id="secretPrev" onclick="goSecretPage(-1)">‹</button>
+                  <span id="secretPageNums"></span>
+                  <button type="button" class="page-btn" id="secretNext" onclick="goSecretPage(1)">›</button>
                 </div>
               </div>
             </div>
@@ -1766,6 +2480,101 @@
       <div class="modal-footer" style="justify-content: center;">
         <button type="button" class="btn btn-default" onclick="closeExportConfirm()">取消</button>
         <button type="button" class="btn btn-primary" id="exportConfirmOk" onclick="confirmExport()">确认导出</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新增账户 -->
+  <div class="overlay" id="secretAddOverlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="secretAddTitle">
+    <div class="modal modal-md">
+      <div class="modal-header">
+        <h2 class="modal-title" id="secretAddTitle">新增账户</h2>
+        <button class="modal-close" type="button" aria-label="关闭" onclick="closeSecretAddModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="secretAddForm" onsubmit="return submitSecretAdd(event)">
+          <div class="secret-form-grid">
+            <div class="secret-form-item">
+              <label for="addSecretPlatform"><span class="required">*</span>支付平台</label>
+              <select id="addSecretPlatform" onchange="onSecretAddFormChange()">
+                <option value="">选择支付平台</option>
+              </select>
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretStatus"><span class="required">*</span>状态</label>
+              <select id="addSecretStatus">
+                <option value="启用" selected>启用</option>
+                <option value="停用">停用</option>
+              </select>
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretEntity">主体信息</label>
+              <input id="addSecretEntity" type="text" placeholder="请输入主体信息" autocomplete="off" />
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretAccountNo">账号</label>
+              <input id="addSecretAccountNo" type="text" placeholder="请输入账号" autocomplete="off" />
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretAlias"><span class="required">*</span>账户别名</label>
+              <input id="addSecretAlias" type="text" placeholder="如：PayPal-北美#1" autocomplete="off" />
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretTimezone"><span class="required">*</span>时区</label>
+              <select id="addSecretTimezone">
+                <option value="">请选择时区</option>
+                <option value="UTC+8">UTC+8</option>
+                <option value="Asia/Shanghai">Asia/Shanghai</option>
+                <option value="UTC+0">UTC+0</option>
+                <option value="America/New_York">America/New_York</option>
+              </select>
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretNature"><span class="required">*</span>账户性质</label>
+              <select id="addSecretNature">
+                <option value="">请选择账户性质</option>
+              </select>
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretPurpose"><span class="required">*</span>用途</label>
+              <select id="addSecretPurpose">
+                <option value="">请选择用途</option>
+              </select>
+            </div>
+            <div class="secret-form-item secret-form-full">
+              <label><span class="required">*</span>配置类别</label>
+              <div class="secret-radio-group" role="radiogroup" aria-label="配置类别">
+                <label class="secret-radio">
+                  <input type="radio" name="addSecretConfigType" value="静态" checked onchange="onSecretAddFormChange()" />
+                  静态
+                </label>
+                <label class="secret-radio">
+                  <input type="radio" name="addSecretConfigType" value="API" onchange="onSecretAddFormChange()" />
+                  API
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="secret-bind-box" id="secretBindBox" style="display: none;">
+            <div class="secret-bind-head">
+              <span class="title">绑定信息</span>
+              <span class="secret-bind-tag" id="secretBindTag">—</span>
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretToken"><span class="required">*</span>Token</label>
+              <input id="addSecretToken" type="text" placeholder="请输入Token" autocomplete="off" />
+            </div>
+            <div class="secret-form-item">
+              <label for="addSecretPrivateKey"><span class="required">*</span>Private Key</label>
+              <textarea id="addSecretPrivateKey" rows="4" placeholder="请输入Private Key"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="closeSecretAddModal()">取消</button>
+        <button type="submit" form="secretAddForm" class="btn btn-primary">确认</button>
       </div>
     </div>
   </div>
@@ -2223,6 +3032,41 @@
       renderDetailTable();
     }
 
+    function exportRebateDetail() {
+      if (!detailState.filtered.length) {
+        showToast("暂无数据可导出");
+        return;
+      }
+      openExportConfirm("rebateDetail");
+    }
+
+    function doExportRebateDetail() {
+      const headers = [
+        "交易描述",
+        "交易金额",
+        "返点金额",
+        "返点比例",
+        "账户名称",
+        "结算时间",
+        "交易ID",
+      ];
+      const lines = detailState.filtered.map((row) =>
+        [
+          row.description,
+          formatAmount(row.txAmount),
+          formatAmount(row.cashback),
+          row.rate,
+          row.accountName,
+          row.settlementDate,
+          row.txId,
+        ]
+          .map(csvEscape)
+          .join(",")
+      );
+      downloadCsv("Card返点明细_" + formatDateYMD(new Date()) + ".csv", headers, lines);
+      showToast("导出成功");
+    }
+
     function renderDetailTable() {
       const total = detailState.filtered.length;
       const totalPages = Math.max(1, Math.ceil(total / detailState.pageSize));
@@ -2311,14 +3155,16 @@
       today.setHours(0, 0, 0, 0);
 
       let id = 1;
-      for (let d = 0; d < 30; d++) {
+      // 近 8 个月日数据，供月度 BI 聚合展示
+      for (let d = 0; d < 245; d++) {
         const day = new Date(today);
         day.setDate(day.getDate() - d);
         const dateKey = formatDateYMD(day);
+        const monthFactor = 0.75 + ((day.getMonth() % 6) * 0.08) + rand() * 0.2;
         cards.forEach((card) => {
           // 部分日期可能无消耗，增加随机性
-          if (rand() < 0.25) return;
-          const amount = demoAmount(12, 520);
+          if (rand() < 0.32) return;
+          const amount = demoAmount(12 * monthFactor, 520 * monthFactor);
           const txCount = 2 + Math.floor(rand() * 4); // 2~5 笔
           const txs = [];
           let remain = amount;
@@ -2485,18 +3331,30 @@
     let pendingExportType = null;
     let pendingRebateId = null;
 
-    function openExportConfirm(type, rebateId) {
+    function openExportConfirm(type, recordId) {
       pendingExportType = type;
-      pendingRebateId = rebateId == null ? null : rebateId;
+      pendingRebateId = recordId == null ? null : recordId;
       let msg = "确认导出当前查询结果的日消耗数据吗？";
       let okText = "确认导出";
       let title = "导出确认";
       if (type === "details") {
         msg = "确认导出当前查询结果的交易明细吗？";
+      } else if (type === "rebateDetail") {
+        msg = "确认导出当前查询结果的返点明细吗？";
+      } else if (type === "secretExport") {
+        msg = "确认导出当前查询结果的密钥账户数据吗？";
+      } else if (type === "secretSyncAll") {
+        msg = "确认立即同步一次全部启用账户吗？";
+        okText = "确认同步";
+        title = "同步确认";
       } else if (type === "rebate") {
         msg = "确认下载该月返点明细吗？";
         okText = "确认下载";
         title = "下载确认";
+      } else if (type === "dailyUpdate") {
+        msg = "确认更新该条日消耗数据吗？";
+        okText = "确认更新";
+        title = "更新确认";
       }
       document.getElementById("exportConfirmTitle").textContent = title;
       document.getElementById("exportConfirmMsg").textContent = msg;
@@ -2512,14 +3370,22 @@
 
     function confirmExport() {
       const type = pendingExportType;
-      const rebateId = pendingRebateId;
+      const recordId = pendingRebateId;
       closeExportConfirm();
       if (type === "details") {
         doExportDailyDetails();
       } else if (type === "data") {
         doExportDailyData();
+      } else if (type === "rebateDetail") {
+        doExportRebateDetail();
+      } else if (type === "secretExport") {
+        doExportSecretData();
+      } else if (type === "secretSyncAll") {
+        doSyncSecretAll();
       } else if (type === "rebate") {
-        doDownloadRebate(rebateId);
+        doDownloadRebate(recordId);
+      } else if (type === "dailyUpdate") {
+        doUpdateDailyRow(recordId);
       }
     }
 
@@ -2669,6 +3535,66 @@
       document.getElementById("dailyTxOverlay").style.display = "none";
     }
 
+    function requestUpdateDaily(id) {
+      const row = dailyAllData.find((r) => r.id === id);
+      if (!row) return;
+      openExportConfirm("dailyUpdate", id);
+    }
+
+    function doUpdateDailyRow(id) {
+      const row = dailyAllData.find((r) => r.id === id);
+      if (!row) return;
+
+      // 模拟刷新该条日消耗及其交易明细
+      let seed = (Date.now() + id * 97) >>> 0;
+      function rand() {
+        seed = (seed * 1664525 + 1013904223) >>> 0;
+        return seed / 4294967296;
+      }
+      function randCode(len) {
+        const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+        let s = "";
+        for (let i = 0; i < len; i++) s += chars[Math.floor(rand() * chars.length)];
+        return s;
+      }
+      function pick(arr) {
+        return arr[Math.floor(rand() * arr.length)];
+      }
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      const amount = Math.round((12 + rand() * 508) * 100) / 100;
+      const txCount = 2 + Math.floor(rand() * 4);
+      const txs = [];
+      let remain = amount;
+      for (let t = 0; t < txCount; t++) {
+        const isLast = t === txCount - 1;
+        const txAmt = isLast
+          ? Math.round(remain * 100) / 100
+          : Math.round((remain * (0.15 + rand() * 0.35)) * 100) / 100;
+        remain = Math.round((remain - txAmt) * 100) / 100;
+        const hour = Math.floor(rand() * 24);
+        const minute = Math.floor(rand() * 60);
+        const second = Math.floor(rand() * 60);
+        txs.push({
+          time: row.date + " " + pad(hour) + ":" + pad(minute) + ":" + pad(second),
+          description: pick(["DEMOADS", "SAMPLE", "MOCKPAY", "TESTMKT"]) + " *" + randCode(6).toUpperCase(),
+          amount: txAmt,
+          currency: "USD",
+          status: pick(["成功", "成功", "成功", "已撤销"]),
+          txId: "demo_tx_" + randCode(12),
+        });
+      }
+      txs.sort((a, b) => b.time.localeCompare(a.time));
+
+      row.amount = amount;
+      row.transactions = txs;
+
+      applyDailyFilter(false);
+      showToast("更新成功");
+    }
+
     function renderDailyTable() {
       const total = dailyState.filtered.length;
       const totalPages = Math.max(1, Math.ceil(total / dailyState.pageSize));
@@ -2701,7 +3627,10 @@
             <td>${row.currency}</td>
             <td class="num amount-green col-amount">${formatAmount(row.amount)}</td>
             <td class="col-action">
-              <span class="link" onclick="openDailyTxModal(${row.id})">查看明细</span>
+              <div class="ops">
+                <span class="link" onclick="openDailyTxModal(${row.id})">查看明细</span>
+                <span class="link" onclick="requestUpdateDaily(${row.id})">更新</span>
+              </div>
             </td>
           </tr>`
           )
@@ -2745,10 +3674,1248 @@
         rebate: "Card返点统计",
         detail: "Card返点明细",
         daily: "Card日消耗",
+        bi: "BI统计",
+        secret: "密钥信息配置",
       };
+      const modules = {
+        secret: "财务对账",
+      };
+      const moduleName = modules[page] || "信用卡管理";
+      document.getElementById("breadcrumbModule").textContent = moduleName;
       document.getElementById("breadcrumbCurrent").textContent = titles[page] || page;
       document.title =
-        (titles[page] || page) + " · 信用卡管理 · Fund";
+        (titles[page] || page) + " · " + moduleName + " · Fund";
+
+      if (page === "bi") {
+        renderBi();
+      }
+      if (page === "secret") {
+        renderSecretTable();
+      }
+    }
+
+    // ----- BI统计（基于 Card 日消耗数据）-----
+    const biState = {
+      tab: "daily",
+      dailyFrom: "",
+      dailyTo: "",
+      monthFrom: "",
+      monthTo: "",
+      slashAsOf: "",
+    };
+
+    // 卡使用情况 mock（演示数据，非真实业务）
+    const slashUsageAllData = [];
+    (function buildSlashMock() {
+      // 2025-06 ~ 2026-07：按月独立统计（发卡/活跃/额度），数值重新生成
+      const months = [];
+      for (let y = 2025; y <= 2026; y++) {
+        const mStart = y === 2025 ? 6 : 1;
+        const mEnd = y === 2026 ? 7 : 12;
+        for (let m = mStart; m <= mEnd; m++) months.push([y, m]);
+      }
+
+      months.forEach(([y, m], i) => {
+        const seasonBoost = m >= 3 && m <= 5 ? 1.35 : m >= 11 ? 1.25 : 1;
+        const quiet = y === 2025 && m >= 7 && m <= 10;
+        const baseCards = quiet ? 0 : Math.round((12 + (i % 7) * 4 + m) * seasonBoost);
+        const totalCards = quiet ? 0 : baseCards + ((i * 3) % 9);
+        const activeCards = quiet
+          ? 0
+          : Math.max(0, Math.round(totalCards * (0.35 + ((i + m) % 5) * 0.08)));
+        const avgLimit = 16800 + ((i * 211) % 5600) + m * 120;
+        const totalLimit =
+          quiet ? 0 : Math.round(totalCards * avgLimit * (0.92 + (i % 4) * 0.03) * 100) / 100;
+        const activeLimit =
+          quiet || !totalCards
+            ? 0
+            : Math.round(totalLimit * (activeCards / totalCards) * (0.95 + (m % 3) * 0.02) * 100) /
+              100;
+        const usedRate = 0.62 + ((i + m) % 6) * 0.05 + (m >= 4 && m <= 6 ? 0.08 : 0);
+        const activeUsed =
+          quiet
+            ? 0
+            : Math.round(activeLimit * Math.min(0.97, usedRate) * 100) / 100;
+
+        slashUsageAllData.push({
+          year: y,
+          month: m,
+          monthKey: y + "-" + String(m).padStart(2, "0"),
+          totalCards,
+          activeCards,
+          totalLimit,
+          activeLimit,
+          activeUsed,
+        });
+      });
+    })();
+
+    function switchBiTab(tab) {
+      biState.tab = tab;
+      document.querySelectorAll(".bi-tab").forEach((el) => {
+        el.classList.toggle("active", el.dataset.biTab === tab);
+      });
+      document.getElementById("bi-panel-daily").classList.toggle("active", tab === "daily");
+      document.getElementById("bi-panel-monthly").classList.toggle("active", tab === "monthly");
+      document.getElementById("bi-panel-slash").classList.toggle("active", tab === "slash");
+      renderBi();
+    }
+
+    function setBiDefaultFilters() {
+      const week = getRecentWeekRange();
+      biState.dailyFrom = week.from;
+      biState.dailyTo = week.to;
+      document.getElementById("biDailyFrom").value = week.from;
+      document.getElementById("biDailyTo").value = week.to;
+
+      const now = new Date();
+      const toMonth =
+        now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0");
+      const fromDate = new Date(now.getFullYear(), now.getMonth() - 7, 1);
+      const fromMonth =
+        fromDate.getFullYear() + "-" + String(fromDate.getMonth() + 1).padStart(2, "0");
+      biState.monthFrom = fromMonth;
+      biState.monthTo = toMonth;
+      document.getElementById("biMonthFrom").value = fromMonth;
+      document.getElementById("biMonthTo").value = toMonth;
+
+      const asOf = formatDateYMD(now);
+      biState.slashAsOf = asOf;
+      document.getElementById("biSlashAsOf").value = asOf;
+    }
+
+    function searchBiDaily(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const from = document.getElementById("biDailyFrom").value;
+      const to = document.getElementById("biDailyTo").value;
+      if (from && to && from > to) {
+        showToast("日期起不能晚于止");
+        return false;
+      }
+      biState.dailyFrom = from;
+      biState.dailyTo = to;
+      renderBiDaily();
+      return false;
+    }
+
+    function resetBiDaily() {
+      document.getElementById("biDailyFrom").value = "";
+      document.getElementById("biDailyTo").value = "";
+      biState.dailyFrom = "";
+      biState.dailyTo = "";
+      renderBiDaily();
+    }
+
+    function searchBiMonthly(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const from = document.getElementById("biMonthFrom").value;
+      const to = document.getElementById("biMonthTo").value;
+      if (from && to && from > to) {
+        showToast("月份起不能晚于止");
+        return false;
+      }
+      biState.monthFrom = from;
+      biState.monthTo = to;
+      renderBiMonthly();
+      return false;
+    }
+
+    function resetBiMonthly() {
+      document.getElementById("biMonthFrom").value = "";
+      document.getElementById("biMonthTo").value = "";
+      biState.monthFrom = "";
+      biState.monthTo = "";
+      renderBiMonthly();
+    }
+
+    function searchBiSlash(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      biState.slashAsOf = document.getElementById("biSlashAsOf").value;
+      renderBiSlash();
+      return false;
+    }
+
+    function resetBiSlash() {
+      document.getElementById("biSlashAsOf").value = "";
+      biState.slashAsOf = "";
+      renderBiSlash();
+    }
+
+    function renderBi() {
+      if (biState.tab === "monthly") renderBiMonthly();
+      else if (biState.tab === "slash") renderBiSlash();
+      else renderBiDaily();
+    }
+
+    function buildDailyAgg(from, to) {
+      const map = {};
+      dailyAllData.forEach((row) => {
+        if (from && row.date < from) return;
+        if (to && row.date > to) return;
+        if (!map[row.date]) {
+          map[row.date] = { date: row.date, total: 0, cards: new Set() };
+        }
+        map[row.date].total += row.amount;
+        map[row.date].cards.add(row.cardId);
+      });
+      const rows = Object.values(map)
+        .map((item) => ({
+          date: item.date,
+          total: Math.round(item.total * 100) / 100,
+          cardCount: item.cards.size,
+          avgPerCard:
+            item.cards.size > 0
+              ? Math.round((item.total / item.cards.size) * 100) / 100
+              : 0,
+        }))
+        .sort((a, b) => a.date.localeCompare(b.date));
+
+      rows.forEach((row, idx) => {
+        if (idx === 0) {
+          row.change = null;
+        } else {
+          row.change = Math.round((row.total - rows[idx - 1].total) * 100) / 100;
+        }
+      });
+      return rows;
+    }
+
+    function buildMonthlyAgg(from, to) {
+      const map = {};
+      dailyAllData.forEach((row) => {
+        const month = row.date.slice(0, 7);
+        if (from && month < from) return;
+        if (to && month > to) return;
+        if (!map[month]) {
+          map[month] = {
+            month,
+            total: 0,
+            days: new Set(),
+            cards: new Set(),
+          };
+        }
+        map[month].total += row.amount;
+        map[month].days.add(row.date);
+        map[month].cards.add(row.cardId);
+      });
+      const rows = Object.values(map)
+        .map((item) => ({
+          month: item.month,
+          monthLabel:
+            item.month.slice(0, 4) + "年" + Number(item.month.slice(5, 7)) + "月",
+          total: Math.round(item.total * 100) / 100,
+          dayCount: item.days.size,
+          cardCount: item.cards.size,
+          avgDaily:
+            item.days.size > 0
+              ? Math.round((item.total / item.days.size) * 100) / 100
+              : 0,
+        }))
+        .sort((a, b) => a.month.localeCompare(b.month));
+
+      rows.forEach((row, idx) => {
+        if (idx === 0) row.change = null;
+        else row.change = Math.round((row.total - rows[idx - 1].total) * 100) / 100;
+      });
+      return rows;
+    }
+
+    function formatChange(n) {
+      if (n == null || !Number.isFinite(n)) return "—";
+      const prefix = n > 0 ? "+" : "";
+      return prefix + formatAmount(n);
+    }
+
+    function changeClass(n) {
+      if (n == null || n === 0) return "";
+      return n > 0 ? "amount-green" : "";
+    }
+
+    function renderBiKpi(containerId, items) {
+      document.getElementById(containerId).innerHTML = items
+        .map(
+          (item) => `
+        <div class="bi-kpi">
+          <div class="bi-kpi-label">${item.label}</div>
+          <div class="bi-kpi-value${item.accent ? " accent" : ""}">${item.value}</div>
+        </div>`
+        )
+        .join("");
+    }
+
+    function renderLineChart(containerId, points) {
+      const el = document.getElementById(containerId);
+      if (!points.length) {
+        el.innerHTML = '<div class="bi-chart-empty">暂无数据</div>';
+        return;
+      }
+      const w = 800;
+      const h = 260;
+      const pad = { top: 20, right: 20, bottom: 36, left: 56 };
+      const maxVal = Math.max.apply(
+        null,
+        points.map((p) => p.value)
+      );
+      const minVal = 0;
+      const span = Math.max(maxVal - minVal, 1);
+      const innerW = w - pad.left - pad.right;
+      const innerH = h - pad.top - pad.bottom;
+
+      const coords = points.map((p, i) => {
+        const x =
+          pad.left +
+          (points.length === 1 ? innerW / 2 : (i / (points.length - 1)) * innerW);
+        const y = pad.top + innerH - ((p.value - minVal) / span) * innerH;
+        return { x, y, label: p.label, value: p.value };
+      });
+
+      const path = coords
+        .map((c, i) => (i === 0 ? "M" : "L") + c.x.toFixed(1) + " " + c.y.toFixed(1))
+        .join(" ");
+      const area =
+        path +
+        " L" +
+        coords[coords.length - 1].x.toFixed(1) +
+        " " +
+        (pad.top + innerH) +
+        " L" +
+        coords[0].x.toFixed(1) +
+        " " +
+        (pad.top + innerH) +
+        " Z";
+
+      const yTicks = [0, 0.5, 1].map((t) => {
+        const val = minVal + span * t;
+        const y = pad.top + innerH - t * innerH;
+        return { val, y };
+      });
+
+      const labelStep = Math.max(1, Math.ceil(points.length / 7));
+      el.innerHTML = `
+        <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+          ${yTicks
+            .map(
+              (t) => `
+            <line x1="${pad.left}" y1="${t.y}" x2="${w - pad.right}" y2="${t.y}" stroke="#f0f0f0"/>
+            <text x="${pad.left - 8}" y="${t.y + 4}" text-anchor="end" fill="rgba(0,0,0,0.45)" font-size="11">${formatAmount(t.val)}</text>`
+            )
+            .join("")}
+          <path d="${area}" fill="rgba(22,119,255,0.08)"></path>
+          <path d="${path}" fill="none" stroke="#1677ff" stroke-width="2.5" stroke-linejoin="round"></path>
+          ${coords
+            .map(
+              (c) =>
+                `<circle cx="${c.x}" cy="${c.y}" r="3.5" fill="#fff" stroke="#1677ff" stroke-width="2"><title>${c.label}: ${formatAmount(c.value)}</title></circle>`
+            )
+            .join("")}
+          ${coords
+            .map((c, i) =>
+              i % labelStep === 0 || i === coords.length - 1
+                ? `<text x="${c.x}" y="${h - 12}" text-anchor="middle" fill="rgba(0,0,0,0.45)" font-size="11">${c.label.slice(5)}</text>`
+                : ""
+            )
+            .join("")}
+        </svg>`;
+    }
+
+    function renderBarChart(containerId, points) {
+      const el = document.getElementById(containerId);
+      if (!points.length) {
+        el.innerHTML = '<div class="bi-chart-empty">暂无数据</div>';
+        return;
+      }
+      const w = 800;
+      const h = 260;
+      const pad = { top: 20, right: 20, bottom: 40, left: 56 };
+      const maxVal = Math.max.apply(
+        null,
+        points.map((p) => p.value)
+      );
+      const span = Math.max(maxVal, 1);
+      const innerW = w - pad.left - pad.right;
+      const innerH = h - pad.top - pad.bottom;
+      const gap = 12;
+      const barW = Math.max(18, (innerW - gap * (points.length + 1)) / points.length);
+
+      const yTicks = [0, 0.5, 1].map((t) => {
+        const val = span * t;
+        const y = pad.top + innerH - t * innerH;
+        return { val, y };
+      });
+
+      el.innerHTML = `
+        <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+          ${yTicks
+            .map(
+              (t) => `
+            <line x1="${pad.left}" y1="${t.y}" x2="${w - pad.right}" y2="${t.y}" stroke="#f0f0f0"/>
+            <text x="${pad.left - 8}" y="${t.y + 4}" text-anchor="end" fill="rgba(0,0,0,0.45)" font-size="11">${formatAmount(t.val)}</text>`
+            )
+            .join("")}
+          ${points
+            .map((p, i) => {
+              const x = pad.left + gap + i * (barW + gap);
+              const bh = (p.value / span) * innerH;
+              const y = pad.top + innerH - bh;
+              return `
+              <rect x="${x}" y="${y}" width="${barW}" height="${bh}" rx="4" fill="#1677ff" opacity="0.85">
+                <title>${p.label}: ${formatAmount(p.value)}</title>
+              </rect>
+              <text x="${x + barW / 2}" y="${h - 12}" text-anchor="middle" fill="rgba(0,0,0,0.45)" font-size="11">${p.short}</text>`;
+            })
+            .join("")}
+        </svg>`;
+    }
+
+    function renderBiDaily() {
+      const rows = buildDailyAgg(biState.dailyFrom, biState.dailyTo);
+      const total = rows.reduce((s, r) => s + r.total, 0);
+      const peak = rows.reduce(
+        (best, r) => (!best || r.total > best.total ? r : best),
+        null
+      );
+      const avg = rows.length ? total / rows.length : 0;
+
+      renderBiKpi("biDailyKpi", [
+        { label: "区间消耗合计", value: "$" + formatAmount(total), accent: true },
+        { label: "统计天数", value: String(rows.length) },
+        { label: "日均消耗", value: "$" + formatAmount(avg) },
+        {
+          label: "峰值日期",
+          value: peak ? peak.date.slice(5) + " / $" + formatAmount(peak.total) : "—",
+        },
+      ]);
+
+      renderLineChart(
+        "biDailyChart",
+        rows.map((r) => ({ label: r.date, value: r.total }))
+      );
+
+      const tbody = document.getElementById("biDailyTableBody");
+      if (!rows.length) {
+        tbody.innerHTML =
+          '<tr><td colspan="5" style="text-align:center;color:rgba(0,0,0,0.45);padding:40px 16px;">暂无数据</td></tr>';
+      } else {
+        tbody.innerHTML = rows
+          .slice()
+          .reverse()
+          .map(
+            (r) => `
+          <tr>
+            <td>${r.date}</td>
+            <td class="num amount-green">$${formatAmount(r.total)}</td>
+            <td class="num">${r.cardCount}</td>
+            <td class="num">$${formatAmount(r.avgPerCard)}</td>
+            <td class="num ${changeClass(r.change)}">${formatChange(r.change)}</td>
+          </tr>`
+          )
+          .join("");
+      }
+    }
+
+    function renderBiMonthly() {
+      const rows = buildMonthlyAgg(biState.monthFrom, biState.monthTo);
+      const total = rows.reduce((s, r) => s + r.total, 0);
+      const avg = rows.length ? total / rows.length : 0;
+      const peak = rows.reduce(
+        (best, r) => (!best || r.total > best.total ? r : best),
+        null
+      );
+
+      renderBiKpi("biMonthlyKpi", [
+        { label: "区间消耗合计", value: "$" + formatAmount(total), accent: true },
+        { label: "统计月数", value: String(rows.length) },
+        { label: "月均消耗", value: "$" + formatAmount(avg) },
+        {
+          label: "峰值月份",
+          value: peak ? peak.monthLabel + " / $" + formatAmount(peak.total) : "—",
+        },
+      ]);
+
+      renderBarChart(
+        "biMonthlyChart",
+        rows.map((r) => ({
+          label: r.monthLabel,
+          short: Number(r.month.slice(5, 7)) + "月",
+          value: r.total,
+        }))
+      );
+
+      const tbody = document.getElementById("biMonthlyTableBody");
+      if (!rows.length) {
+        tbody.innerHTML =
+          '<tr><td colspan="6" style="text-align:center;color:rgba(0,0,0,0.45);padding:40px 16px;">暂无数据</td></tr>';
+      } else {
+        tbody.innerHTML = rows
+          .slice()
+          .reverse()
+          .map(
+            (r) => `
+          <tr>
+            <td>${r.monthLabel}</td>
+            <td class="num amount-green">$${formatAmount(r.total)}</td>
+            <td class="num">${r.dayCount}</td>
+            <td class="num">$${formatAmount(r.avgDaily)}</td>
+            <td class="num">${r.cardCount}</td>
+            <td class="num ${changeClass(r.change)}">${formatChange(r.change)}</td>
+          </tr>`
+          )
+          .join("");
+      }
+    }
+
+    function getSlashRowsByAsOf(asOf) {
+      if (!asOf) return slashUsageAllData.slice();
+      const cutoff = asOf.slice(0, 7); // YYYY-MM
+      return slashUsageAllData.filter((r) => r.monthKey <= cutoff);
+    }
+
+    function renderMultiLineChart(containerId, categories, seriesList) {
+      const el = document.getElementById(containerId);
+      if (!categories.length) {
+        el.innerHTML = '<div class="bi-chart-empty">暂无数据</div>';
+        return;
+      }
+      const w = 800;
+      const h = 260;
+      const pad = { top: 20, right: 20, bottom: 40, left: 64 };
+      const allVals = seriesList.flatMap((s) => s.values);
+      const maxVal = Math.max.apply(null, allVals.concat([1]));
+      const innerW = w - pad.left - pad.right;
+      const innerH = h - pad.top - pad.bottom;
+      const yTicks = [0, 0.5, 1].map((t) => ({
+        val: maxVal * t,
+        y: pad.top + innerH - t * innerH,
+      }));
+      const labelStep = Math.max(1, Math.ceil(categories.length / 8));
+
+      function point(i, value) {
+        const x =
+          pad.left +
+          (categories.length === 1
+            ? innerW / 2
+            : (i / (categories.length - 1)) * innerW);
+        const y = pad.top + innerH - (value / maxVal) * innerH;
+        return { x, y };
+      }
+
+      const paths = seriesList
+        .map((s) => {
+          const d = s.values
+            .map((v, i) => {
+              const p = point(i, v);
+              return (i === 0 ? "M" : "L") + p.x.toFixed(1) + " " + p.y.toFixed(1);
+            })
+            .join(" ");
+          return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.4" stroke-linejoin="round"></path>`;
+        })
+        .join("");
+
+      el.innerHTML = `
+        <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+          ${yTicks
+            .map(
+              (t) => `
+            <line x1="${pad.left}" y1="${t.y}" x2="${w - pad.right}" y2="${t.y}" stroke="#f0f0f0"/>
+            <text x="${pad.left - 8}" y="${t.y + 4}" text-anchor="end" fill="rgba(0,0,0,0.45)" font-size="11">${formatAmount(t.val)}</text>`
+            )
+            .join("")}
+          ${paths}
+          ${categories
+            .map((c, i) =>
+              i % labelStep === 0 || i === categories.length - 1
+                ? `<text x="${point(i, 0).x}" y="${h - 12}" text-anchor="middle" fill="rgba(0,0,0,0.45)" font-size="11">${c}</text>`
+                : ""
+            )
+            .join("")}
+        </svg>`;
+    }
+
+    function renderBiSlash() {
+      const rows = getSlashRowsByAsOf(biState.slashAsOf);
+      const asOfText = biState.slashAsOf
+        ? biState.slashAsOf.replace(/-/g, "/")
+        : "全部";
+      document.getElementById("biSlashAsOfLabel").innerHTML =
+        "<strong>统计时间</strong> " + asOfText;
+
+      const latest = rows.length ? rows[rows.length - 1] : null;
+      const sumCards = rows.reduce((s, r) => s + r.totalCards, 0);
+      const sumActive = rows.reduce((s, r) => s + r.activeCards, 0);
+      const sumUsed = rows.reduce((s, r) => s + r.activeUsed, 0);
+      const usageRate =
+        latest && latest.activeLimit > 0
+          ? ((latest.activeUsed / latest.activeLimit) * 100).toFixed(1) + "%"
+          : "—";
+
+      renderBiKpi("biSlashKpi", [
+        {
+          label: "最新月活跃卡数",
+          value: latest ? String(latest.activeCards) : "—",
+          accent: true,
+        },
+        { label: "累计发卡数（区间合计）", value: String(sumCards) },
+        { label: "累计活跃已使用额度", value: "$" + formatAmount(sumUsed) },
+        { label: "最新月活跃额度使用率", value: usageRate },
+      ]);
+
+      renderMultiLineChart(
+        "biSlashChart",
+        rows.map((r) => r.year + "/" + r.month),
+        [
+          {
+            color: "#1677ff",
+            values: rows.map((r) => r.totalLimit),
+          },
+          {
+            color: "#52c41a",
+            values: rows.map((r) => r.activeLimit),
+          },
+          {
+            color: "#fa8c16",
+            values: rows.map((r) => r.activeUsed),
+          },
+        ]
+      );
+
+      const tbody = document.getElementById("biSlashTableBody");
+      if (!rows.length) {
+        tbody.innerHTML =
+          '<tr><td colspan="7" style="text-align:center;color:rgba(0,0,0,0.45);padding:40px 16px;">暂无数据</td></tr>';
+        return;
+      }
+
+      // 按年份分组，生成 rowspan
+      const groups = [];
+      rows.forEach((r) => {
+        const last = groups[groups.length - 1];
+        if (!last || last.year !== r.year) {
+          groups.push({ year: r.year, items: [r] });
+        } else {
+          last.items.push(r);
+        }
+      });
+
+      let html = "";
+      groups.forEach((g) => {
+        g.items.forEach((r, idx) => {
+          html += "<tr>";
+          if (idx === 0) {
+            html +=
+              '<td class="year-cell" rowspan="' +
+              g.items.length +
+              '">' +
+              g.year +
+              "</td>";
+          }
+          html += `
+            <td>${r.month}</td>
+            <td>${r.totalCards}</td>
+            <td>${r.activeCards}</td>
+            <td class="num">$${formatAmount(r.totalLimit)}</td>
+            <td class="num">$${formatAmount(r.activeLimit)}</td>
+            <td class="num">$${formatAmount(r.activeUsed)}</td>
+          </tr>`;
+        });
+      });
+
+      const total = {
+        totalCards: sumCards,
+        activeCards: sumActive,
+        totalLimit: rows.reduce((s, r) => s + r.totalLimit, 0),
+        activeLimit: rows.reduce((s, r) => s + r.activeLimit, 0),
+        activeUsed: sumUsed,
+      };
+      html += `
+        <tr class="slash-total">
+          <td colspan="2">合计</td>
+          <td>${total.totalCards}</td>
+          <td>${total.activeCards}</td>
+          <td class="num">$${formatAmount(total.totalLimit)}</td>
+          <td class="num">$${formatAmount(total.activeLimit)}</td>
+          <td class="num">$${formatAmount(total.activeUsed)}</td>
+        </tr>`;
+      tbody.innerHTML = html;
+    }
+
+    // ----- 密钥信息配置（演示假数据）-----
+    const secretAllData = [];
+    const secretState = {
+      filtered: [],
+      page: 1,
+      pageSize: 20,
+    };
+
+    (function buildSecretMock() {
+      let seed = 20260728;
+      function rand() {
+        seed = (seed * 1664525 + 1013904223) >>> 0;
+        return seed / 4294967296;
+      }
+      function pick(arr) {
+        return arr[Math.floor(rand() * arr.length)];
+      }
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+      function randDigits(len) {
+        let s = "";
+        for (let i = 0; i < len; i++) s += Math.floor(rand() * 10);
+        return s;
+      }
+      function randCode(len) {
+        const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+        let s = "";
+        for (let i = 0; i < len; i++) s += chars[Math.floor(rand() * chars.length)];
+        return s;
+      }
+      function demoDate(daysAgoMax) {
+        const d = new Date();
+        d.setHours(0, 0, 0, 0);
+        d.setDate(d.getDate() - Math.floor(rand() * daysAgoMax));
+        return (
+          d.getFullYear() +
+          "-" +
+          pad(d.getMonth() + 1) +
+          "-" +
+          pad(d.getDate())
+        );
+      }
+
+      const platforms = ["Wise", "PingPong", "中信银行", "支付宝", "PayPal", "Airwallex"];
+      const natures = ["美元户", "NRA账户", "B2B账户", "多币种账户", "欧元户"];
+      const purposes = ["履约收款", "垫资", "广告收款", "运营支出", "回款结算"];
+      const entities = [
+        "演示主体A有限公司",
+        "Demo Trade Co., Ltd",
+        "示例跨境科技有限公司",
+        "Mock Fulfillment Limited",
+        "测试结算主体",
+        "Sample Global Tech Ltd",
+      ];
+      const timezones = ["UTC+8", "Asia/Shanghai", "UTC+0", "America/New_York"];
+      const aliasPrefixes = ["demo-", "test-", "ops-", "ads-", "settle-"];
+
+      for (let i = 1; i <= 48; i++) {
+        const platform = pick(platforms);
+        const enabled = rand() > 0.22;
+        const createdAt = demoDate(500);
+        const syncedAt = demoDate(60);
+        const accountNo =
+          platform === "中信银行" || platform === "支付宝"
+            ? randDigits(14 + Math.floor(rand() * 4))
+            : randCode(10 + Math.floor(rand() * 6));
+        const configType = pick(["静态", "API"]);
+        secretAllData.push({
+          id: i,
+          platform,
+          nature: pick(natures),
+          purpose: pick(purposes),
+          entity: pick(entities),
+          alias: pick(aliasPrefixes) + platform.toLowerCase().replace(/\s/g, "") + "-" + (100 + i),
+          accountNo,
+          configType,
+          timezone: pick(timezones),
+          status: enabled ? "启用" : "停用",
+          createdAt,
+          syncedAt,
+          token: configType === "API" ? "demo_token_" + randCode(16) : "",
+          privateKey:
+            configType === "API"
+              ? "-----BEGIN DEMO KEY-----\n" + randCode(32) + "\n-----END DEMO KEY-----"
+              : "",
+        });
+      }
+
+      secretAllData.sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.id - a.id);
+    })();
+
+    function fillSecretFilterOptions() {
+      function fill(selectId, values, placeholder) {
+        const el = document.getElementById(selectId);
+        const uniq = Array.from(new Set(values)).sort();
+        el.innerHTML =
+          '<option value="">' +
+          placeholder +
+          "</option>" +
+          uniq.map((v) => '<option value="' + v + '">' + v + "</option>").join("");
+      }
+      fill("secretPlatform", secretAllData.map((r) => r.platform), "请选择支付平台");
+      fill("secretAlias", secretAllData.map((r) => r.alias), "请选择账户别名");
+      fill("secretEntity", secretAllData.map((r) => r.entity), "请选择主体信息");
+      fill("secretNature", secretAllData.map((r) => r.nature), "请选择账户性质");
+      fill("secretPurpose", secretAllData.map((r) => r.purpose), "请选择用途");
+    }
+
+    function getSecretFilterValues() {
+      return {
+        platform: document.getElementById("secretPlatform").value,
+        alias: document.getElementById("secretAlias").value,
+        entity: document.getElementById("secretEntity").value,
+        nature: document.getElementById("secretNature").value,
+        purpose: document.getElementById("secretPurpose").value,
+        account: document.getElementById("secretAccount").value.trim().toLowerCase(),
+        status: document.getElementById("secretStatus").value,
+        configType: document.getElementById("secretConfigType").value,
+        createdFrom: document.getElementById("secretCreatedFrom").value,
+        createdTo: document.getElementById("secretCreatedTo").value,
+        syncFrom: document.getElementById("secretSyncFrom").value,
+        syncTo: document.getElementById("secretSyncTo").value,
+      };
+    }
+
+    function applySecretFilter(resetPage) {
+      const f = getSecretFilterValues();
+      secretState.filtered = secretAllData.filter((row) => {
+        if (f.platform && row.platform !== f.platform) return false;
+        if (f.alias && row.alias !== f.alias) return false;
+        if (f.entity && row.entity !== f.entity) return false;
+        if (f.nature && row.nature !== f.nature) return false;
+        if (f.purpose && row.purpose !== f.purpose) return false;
+        if (f.account && !row.accountNo.toLowerCase().includes(f.account)) return false;
+        if (f.status && row.status !== f.status) return false;
+        if (f.configType && row.configType !== f.configType) return false;
+        if (f.createdFrom && row.createdAt < f.createdFrom) return false;
+        if (f.createdTo && row.createdAt > f.createdTo) return false;
+        if (f.syncFrom && row.syncedAt < f.syncFrom) return false;
+        if (f.syncTo && row.syncedAt > f.syncTo) return false;
+        return true;
+      });
+      if (resetPage !== false) secretState.page = 1;
+      renderSecretTable();
+    }
+
+    function searchSecret(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const f = getSecretFilterValues();
+      if (f.createdFrom && f.createdTo && f.createdFrom > f.createdTo) {
+        showToast("创建时间起不能晚于止");
+        return false;
+      }
+      if (f.syncFrom && f.syncTo && f.syncFrom > f.syncTo) {
+        showToast("最近同步时间起不能晚于止");
+        return false;
+      }
+      applySecretFilter(true);
+      return false;
+    }
+
+    function resetSecretFilter() {
+      document.getElementById("secretPlatform").value = "";
+      document.getElementById("secretAlias").value = "";
+      document.getElementById("secretEntity").value = "";
+      document.getElementById("secretNature").value = "";
+      document.getElementById("secretPurpose").value = "";
+      document.getElementById("secretAccount").value = "";
+      document.getElementById("secretStatus").value = "";
+      document.getElementById("secretConfigType").value = "";
+      document.getElementById("secretCreatedFrom").value = "";
+      document.getElementById("secretCreatedTo").value = "";
+      document.getElementById("secretSyncFrom").value = "";
+      document.getElementById("secretSyncTo").value = "";
+      applySecretFilter(true);
+    }
+
+    function changeSecretPageSize() {
+      secretState.pageSize = Number(document.getElementById("secretPageSize").value) || 20;
+      secretState.page = 1;
+      renderSecretTable();
+    }
+
+    function goSecretPage(delta) {
+      const totalPages = Math.max(1, Math.ceil(secretState.filtered.length / secretState.pageSize));
+      const next = secretState.page + delta;
+      if (next < 1 || next > totalPages) return;
+      secretState.page = next;
+      renderSecretTable();
+    }
+
+    function jumpSecretPage(page) {
+      secretState.page = page;
+      renderSecretTable();
+    }
+
+    function editSecret(id) {
+      openSecretEditModal(id);
+    }
+
+    function toggleSecretStatus(id) {
+      const row = secretAllData.find((r) => r.id === id);
+      if (!row) return;
+      row.status = row.status === "启用" ? "停用" : "启用";
+      showToast(row.status === "启用" ? "已启用" : "已停用");
+      applySecretFilter(false);
+    }
+
+    function syncSecretRow(id) {
+      const row = secretAllData.find((r) => r.id === id);
+      if (!row || row.status !== "启用") return;
+      row.syncedAt = formatDateYMD(new Date());
+      showToast("同步成功");
+      applySecretFilter(false);
+    }
+
+    function syncSecretBalance(id) {
+      const row = secretAllData.find((r) => r.id === id);
+      if (!row || row.status !== "启用") return;
+      row.syncedAt = formatDateYMD(new Date());
+      showToast("余额同步成功");
+      applySecretFilter(false);
+    }
+
+    function syncSecretAll() {
+      openExportConfirm("secretSyncAll");
+    }
+
+    function doSyncSecretAll() {
+      const today = formatDateYMD(new Date());
+      let count = 0;
+      secretAllData.forEach((row) => {
+        if (row.status === "启用") {
+          row.syncedAt = today;
+          count += 1;
+        }
+      });
+      applySecretFilter(false);
+      showToast("已同步 " + count + " 个启用账户");
+    }
+
+    function addSecretAccount() {
+      openSecretAddModal();
+    }
+
+    const secretFormState = {
+      mode: "add", // add | edit
+      editId: null,
+    };
+
+    function fillSecretAddOptions() {
+      function fill(selectId, values, placeholder, extraValue) {
+        const el = document.getElementById(selectId);
+        const uniq = Array.from(new Set(values.concat(extraValue ? [extraValue] : []).filter(Boolean))).sort();
+        el.innerHTML =
+          '<option value="">' +
+          placeholder +
+          "</option>" +
+          uniq.map((v) => '<option value="' + v + '">' + v + "</option>").join("");
+      }
+      fill(
+        "addSecretPlatform",
+        secretAllData.map((r) => r.platform),
+        "选择支付平台"
+      );
+      fill(
+        "addSecretNature",
+        secretAllData.map((r) => r.nature),
+        "请选择账户性质"
+      );
+      fill(
+        "addSecretPurpose",
+        secretAllData.map((r) => r.purpose),
+        "请选择用途"
+      );
+    }
+
+    function getAddSecretConfigType() {
+      const checked = document.querySelector('input[name="addSecretConfigType"]:checked');
+      return checked ? checked.value : "静态";
+    }
+
+    function setAddSecretConfigType(value) {
+      const radio = document.querySelector(
+        'input[name="addSecretConfigType"][value="' + value + '"]'
+      );
+      if (radio) radio.checked = true;
+      else {
+        const fallback = document.querySelector('input[name="addSecretConfigType"][value="静态"]');
+        if (fallback) fallback.checked = true;
+      }
+    }
+
+    function resetSecretAddForm() {
+      document.getElementById("secretAddForm").reset();
+      document.getElementById("addSecretStatus").value = "启用";
+      setAddSecretConfigType("静态");
+      document.getElementById("addSecretToken").value = "";
+      document.getElementById("addSecretPrivateKey").value = "";
+      onSecretAddFormChange();
+    }
+
+    function fillSecretForm(row) {
+      document.getElementById("addSecretPlatform").value = row.platform || "";
+      document.getElementById("addSecretStatus").value = row.status || "启用";
+      document.getElementById("addSecretEntity").value =
+        row.entity && row.entity !== "—" ? row.entity : "";
+      document.getElementById("addSecretAccountNo").value =
+        row.accountNo && row.accountNo !== "—" ? row.accountNo : "";
+      document.getElementById("addSecretAlias").value = row.alias || "";
+      document.getElementById("addSecretTimezone").value = row.timezone || "";
+      document.getElementById("addSecretNature").value = row.nature || "";
+      document.getElementById("addSecretPurpose").value = row.purpose || "";
+      setAddSecretConfigType(row.configType === "API" ? "API" : "静态");
+      document.getElementById("addSecretToken").value = row.token || "";
+      document.getElementById("addSecretPrivateKey").value = row.privateKey || "";
+      onSecretAddFormChange();
+    }
+
+    function onSecretAddFormChange() {
+      const platform = document.getElementById("addSecretPlatform").value;
+      const configType = getAddSecretConfigType();
+      const showBind = configType === "API";
+      const box = document.getElementById("secretBindBox");
+      box.style.display = showBind ? "block" : "none";
+      if (showBind) {
+        document.getElementById("secretBindTag").textContent = platform
+          ? platform.toLowerCase()
+          : "待选平台";
+      }
+    }
+
+    function openSecretAddModal() {
+      secretFormState.mode = "add";
+      secretFormState.editId = null;
+      document.getElementById("secretAddTitle").textContent = "新增账户";
+      fillSecretAddOptions();
+      resetSecretAddForm();
+      document.getElementById("secretAddOverlay").style.display = "flex";
+    }
+
+    function openSecretEditModal(id) {
+      const row = secretAllData.find((r) => r.id === id);
+      if (!row) return;
+      secretFormState.mode = "edit";
+      secretFormState.editId = id;
+      document.getElementById("secretAddTitle").textContent = "编辑账户";
+      fillSecretAddOptions();
+      // 确保当前行的枚举值在下拉里
+      const platformEl = document.getElementById("addSecretPlatform");
+      if (row.platform && !Array.from(platformEl.options).some((o) => o.value === row.platform)) {
+        platformEl.add(new Option(row.platform, row.platform));
+      }
+      const natureEl = document.getElementById("addSecretNature");
+      if (row.nature && !Array.from(natureEl.options).some((o) => o.value === row.nature)) {
+        natureEl.add(new Option(row.nature, row.nature));
+      }
+      const purposeEl = document.getElementById("addSecretPurpose");
+      if (row.purpose && !Array.from(purposeEl.options).some((o) => o.value === row.purpose)) {
+        purposeEl.add(new Option(row.purpose, row.purpose));
+      }
+      fillSecretForm(row);
+      document.getElementById("secretAddOverlay").style.display = "flex";
+    }
+
+    function closeSecretAddModal() {
+      secretFormState.mode = "add";
+      secretFormState.editId = null;
+      document.getElementById("secretAddOverlay").style.display = "none";
+    }
+
+    function submitSecretAdd(e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      const platform = document.getElementById("addSecretPlatform").value;
+      const status = document.getElementById("addSecretStatus").value;
+      const entity = document.getElementById("addSecretEntity").value.trim();
+      const accountNo = document.getElementById("addSecretAccountNo").value.trim();
+      const alias = document.getElementById("addSecretAlias").value.trim();
+      const configType = getAddSecretConfigType();
+      const timezone = document.getElementById("addSecretTimezone").value;
+      const nature = document.getElementById("addSecretNature").value;
+      const purpose = document.getElementById("addSecretPurpose").value;
+      const token = document.getElementById("addSecretToken").value.trim();
+      const privateKey = document.getElementById("addSecretPrivateKey").value.trim();
+
+      if (!platform) {
+        showToast("请选择支付平台");
+        return false;
+      }
+      if (!status) {
+        showToast("请选择状态");
+        return false;
+      }
+      if (!alias) {
+        showToast("请输入账户别名");
+        return false;
+      }
+      if (!configType) {
+        showToast("请选择配置类别");
+        return false;
+      }
+      if (!timezone) {
+        showToast("请选择时区");
+        return false;
+      }
+      if (!nature) {
+        showToast("请选择账户性质");
+        return false;
+      }
+      if (!purpose) {
+        showToast("请选择用途");
+        return false;
+      }
+      if (configType === "API") {
+        if (!token) {
+          showToast("请输入Token");
+          return false;
+        }
+        if (!privateKey) {
+          showToast("请输入Private Key");
+          return false;
+        }
+      }
+
+      const payload = {
+        platform,
+        nature,
+        purpose,
+        entity: entity || "—",
+        alias,
+        accountNo: accountNo || "—",
+        configType,
+        timezone,
+        status,
+        token: configType === "API" ? token : "",
+        privateKey: configType === "API" ? privateKey : "",
+      };
+
+      if (secretFormState.mode === "edit" && secretFormState.editId != null) {
+        const row = secretAllData.find((r) => r.id === secretFormState.editId);
+        if (!row) {
+          showToast("记录不存在");
+          return false;
+        }
+        Object.assign(row, payload);
+        fillSecretFilterOptions();
+        applySecretFilter(false);
+        closeSecretAddModal();
+        showToast("保存成功");
+        return false;
+      }
+
+      const nextId =
+        secretAllData.reduce((max, r) => Math.max(max, r.id), 0) + 1;
+      const today = formatDateYMD(new Date());
+      secretAllData.unshift({
+        id: nextId,
+        ...payload,
+        createdAt: today,
+        syncedAt: today,
+      });
+
+      fillSecretFilterOptions();
+      applySecretFilter(true);
+      closeSecretAddModal();
+      showToast("新增成功");
+      return false;
+    }
+
+    function exportSecretData() {
+      if (!secretState.filtered.length) {
+        showToast("暂无数据可导出");
+        return;
+      }
+      openExportConfirm("secretExport");
+    }
+
+    function doExportSecretData() {
+      const headers = [
+        "支付平台",
+        "账户性质",
+        "用途",
+        "主体信息",
+        "账户别名",
+        "账号",
+        "配置类别",
+        "时区",
+        "状态",
+        "创建时间",
+        "最近同步时间",
+      ];
+      const lines = secretState.filtered.map((row) =>
+        [
+          row.platform,
+          row.nature,
+          row.purpose,
+          row.entity,
+          row.alias,
+          row.accountNo,
+          row.configType,
+          row.timezone,
+          row.status,
+          row.createdAt,
+          row.syncedAt,
+        ]
+          .map(csvEscape)
+          .join(",")
+      );
+      downloadCsv("密钥信息配置_" + formatDateYMD(new Date()) + ".csv", headers, lines);
+      showToast("导出成功");
+    }
+
+    function renderSecretTable() {
+      const total = secretState.filtered.length;
+      const totalPages = Math.max(1, Math.ceil(total / secretState.pageSize));
+      if (secretState.page > totalPages) secretState.page = totalPages;
+
+      const start = (secretState.page - 1) * secretState.pageSize;
+      const rows = secretState.filtered.slice(start, start + secretState.pageSize);
+      const tbody = document.getElementById("secretTableBody");
+
+      if (!rows.length) {
+        tbody.innerHTML =
+          '<tr><td colspan="9" style="text-align:center;color:rgba(0,0,0,0.45);padding:40px 16px;">暂无数据</td></tr>';
+      } else {
+        tbody.innerHTML = rows
+          .map((row) => {
+            const enabled = row.status === "启用";
+            const toggleLabel = enabled ? "停用" : "启用";
+            const toggleClass = enabled ? "link link-danger" : "link";
+            const syncClass = enabled ? "link" : "link link-disabled";
+            return `
+          <tr>
+            <td>${row.platform}</td>
+            <td>${row.nature}</td>
+            <td>${row.purpose}</td>
+            <td title="${row.entity}">${row.entity}</td>
+            <td title="${row.alias}">${row.alias}</td>
+            <td title="${row.accountNo}">${row.accountNo}</td>
+            <td>${row.configType}</td>
+            <td>${row.timezone}</td>
+            <td>
+              <div class="ops ops-2row">
+                <span class="link" onclick="editSecret(${row.id})">编辑</span>
+                <span class="${toggleClass}" onclick="toggleSecretStatus(${row.id})">${toggleLabel}</span>
+                <span class="${syncClass}" onclick="syncSecretRow(${row.id})">同步</span>
+                <span class="${syncClass}" onclick="syncSecretBalance(${row.id})">同步余额</span>
+              </div>
+            </td>
+          </tr>`;
+          })
+          .join("");
+      }
+
+      document.getElementById("secretTotalText").textContent = "共 " + total + " 条记录";
+      document.getElementById("secretPrev").disabled = secretState.page <= 1;
+      document.getElementById("secretNext").disabled = secretState.page >= totalPages || total === 0;
+
+      const nums = document.getElementById("secretPageNums");
+      const maxButtons = 5;
+      let fromPage = Math.max(1, secretState.page - Math.floor(maxButtons / 2));
+      let toPage = Math.min(totalPages, fromPage + maxButtons - 1);
+      fromPage = Math.max(1, toPage - maxButtons + 1);
+
+      let html = "";
+      for (let p = fromPage; p <= toPage; p++) {
+        html +=
+          '<button type="button" class="page-btn' +
+          (p === secretState.page ? " active" : "") +
+          '" onclick="jumpSecretPage(' +
+          p +
+          ')">' +
+          p +
+          "</button>";
+      }
+      nums.innerHTML = html;
     }
 
     // Init
@@ -2759,6 +4926,9 @@
     initDailyCardNameOptions();
     setDailyDefaultDates();
     applyDailyFilter(true);
+    setBiDefaultFilters();
+    fillSecretFilterOptions();
+    applySecretFilter(true);
   </script>
 </body>
 </html>
