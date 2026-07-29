@@ -1115,10 +1115,6 @@
       margin-bottom: 16px;
     }
 
-    .bi-kpi-row.bi-kpi-row-5 {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
     .bi-kpi {
       background: #fff;
       border: 1px solid var(--border-light);
@@ -1294,12 +1290,6 @@
       height: 10px;
       border-radius: 2px;
       display: inline-block;
-    }
-
-    @media (max-width: 1100px) {
-      .bi-kpi-row.bi-kpi-row-5 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
     }
 
     @media (max-width: 900px) {
@@ -1686,7 +1676,7 @@
             <span>密钥信息配置</span>
           </div>
         </div>
-        <div class="sidebar-footer">v1.4.0</div>
+        <div class="sidebar-footer">v1.3.0</div>
       </aside>
 
       <div class="main-wrap">
@@ -2073,14 +2063,10 @@
                 </form>
               </div>
 
-              <div class="bi-kpi-row bi-kpi-row-5" id="biDailyKpi"></div>
+              <div class="bi-kpi-row" id="biDailyKpi"></div>
 
               <div class="bi-chart-card">
                 <div class="bi-chart-title">日消耗走势</div>
-                <div class="bi-chart-legend">
-                  <span><i style="background:#4A6278"></i>日消耗合计</span>
-                  <span><i style="background:#7B96AD"></i>活跃卡消耗</span>
-                </div>
                 <div class="bi-chart-wrap" id="biDailyChart"></div>
               </div>
 
@@ -2094,9 +2080,6 @@
                         <th>有消耗卡数</th>
                         <th>单卡日均</th>
                         <th>较前日变化</th>
-                        <th>有消耗的活跃卡数</th>
-                        <th>活跃卡日均</th>
-                        <th>活跃卡较前日变化</th>
                       </tr>
                     </thead>
                     <tbody id="biDailyTableBody"></tbody>
@@ -2127,10 +2110,6 @@
 
               <div class="bi-chart-card">
                 <div class="bi-chart-title">月度消耗对比</div>
-                <div class="bi-chart-legend">
-                  <span><i style="background:#4A6278"></i>月消耗合计</span>
-                  <span><i style="background:#7B96AD"></i>活跃卡消耗</span>
-                </div>
                 <div class="bi-chart-wrap" id="biMonthlyChart"></div>
               </div>
 
@@ -2145,9 +2124,6 @@
                         <th>日均消耗</th>
                         <th>有消耗卡数</th>
                         <th>较上月变化</th>
-                        <th>有消耗的活跃卡数</th>
-                        <th>活跃卡日均</th>
-                        <th>活跃卡较上月变化</th>
                       </tr>
                     </thead>
                     <tbody id="biMonthlyTableBody"></tbody>
@@ -3321,8 +3297,6 @@
         id: "c_demo" + randCode(8),
         last4: String(1000 + Math.floor(rand() * 9000)),
         alias: aliases[idx % aliases.length],
-        // 演示：部分卡为活跃卡，用于 BI「有消耗的活跃卡数」等维度
-        active: idx !== 3,
       }));
 
       const today = new Date();
@@ -3372,7 +3346,6 @@
             date: dateKey,
             currency: "USD",
             amount,
-            active: !!card.active,
             transactions: txs,
           });
         });
@@ -4152,20 +4125,10 @@
         if (from && row.date < from) return;
         if (to && row.date > to) return;
         if (!map[row.date]) {
-          map[row.date] = {
-            date: row.date,
-            total: 0,
-            cards: new Set(),
-            activeTotal: 0,
-            activeCards: new Set(),
-          };
+          map[row.date] = { date: row.date, total: 0, cards: new Set() };
         }
         map[row.date].total += row.amount;
         map[row.date].cards.add(row.cardId);
-        if (row.active) {
-          map[row.date].activeTotal += row.amount;
-          map[row.date].activeCards.add(row.cardId);
-        }
       });
       const rows = Object.values(map)
         .map((item) => ({
@@ -4176,24 +4139,14 @@
             item.cards.size > 0
               ? Math.round((item.total / item.cards.size) * 100) / 100
               : 0,
-          activeCardCount: item.activeCards.size,
-          activeTotal: Math.round(item.activeTotal * 100) / 100,
-          activeAvgPerCard:
-            item.activeCards.size > 0
-              ? Math.round((item.activeTotal / item.activeCards.size) * 100) / 100
-              : 0,
         }))
         .sort((a, b) => a.date.localeCompare(b.date));
 
       rows.forEach((row, idx) => {
         if (idx === 0) {
           row.change = null;
-          row.activeChange = null;
         } else {
           row.change = Math.round((row.total - rows[idx - 1].total) * 100) / 100;
-          row.activeChange = Math.round(
-            (row.activeTotal - rows[idx - 1].activeTotal) * 100
-          ) / 100;
         }
       });
       return rows;
@@ -4211,17 +4164,11 @@
             total: 0,
             days: new Set(),
             cards: new Set(),
-            activeTotal: 0,
-            activeCards: new Set(),
           };
         }
         map[month].total += row.amount;
         map[month].days.add(row.date);
         map[month].cards.add(row.cardId);
-        if (row.active) {
-          map[month].activeTotal += row.amount;
-          map[month].activeCards.add(row.cardId);
-        }
       });
       const rows = Object.values(map)
         .map((item) => ({
@@ -4235,25 +4182,12 @@
             item.days.size > 0
               ? Math.round((item.total / item.days.size) * 100) / 100
               : 0,
-          activeCardCount: item.activeCards.size,
-          activeTotal: Math.round(item.activeTotal * 100) / 100,
-          activeAvgPerCard:
-            item.activeCards.size > 0
-              ? Math.round((item.activeTotal / item.activeCards.size) * 100) / 100
-              : 0,
         }))
         .sort((a, b) => a.month.localeCompare(b.month));
 
       rows.forEach((row, idx) => {
-        if (idx === 0) {
-          row.change = null;
-          row.activeChange = null;
-        } else {
-          row.change = Math.round((row.total - rows[idx - 1].total) * 100) / 100;
-          row.activeChange = Math.round(
-            (row.activeTotal - rows[idx - 1].activeTotal) * 100
-          ) / 100;
-        }
+        if (idx === 0) row.change = null;
+        else row.change = Math.round((row.total - rows[idx - 1].total) * 100) / 100;
       });
       return rows;
     }
@@ -4424,56 +4358,33 @@
     function renderBiDaily() {
       const rows = buildDailyAgg(biState.dailyFrom, biState.dailyTo);
       const total = rows.reduce((s, r) => s + r.total, 0);
-      const activeTotal = rows.reduce((s, r) => s + r.activeTotal, 0);
       const peak = rows.reduce(
         (best, r) => (!best || r.total > best.total ? r : best),
         null
       );
-      const activePeak = rows.reduce(
-        (best, r) => (!best || r.activeTotal > best.activeTotal ? r : best),
-        null
-      );
 
       renderBiKpi("biDailyKpi", [
+        { label: "区间消耗合计", value: "$" + formatAmount(total), accent: true },
         { label: "统计天数", value: String(rows.length) },
-        { label: "区间消耗合计", value: "$" + formatAmount(total) },
         {
           label: "峰值日期",
           value: peak ? peak.date.slice(5) + " / $" + formatAmount(peak.total) : "—",
         },
-        {
-          label: "区间活跃卡消耗合计",
-          value: "$" + formatAmount(activeTotal),
-        },
-        {
-          label: "活跃卡峰值日期",
-          value: activePeak
-            ? activePeak.date.slice(5) + " / $" + formatAmount(activePeak.activeTotal)
-            : "—",
-        },
       ]);
 
-      renderGroupedBarChart(
+      renderBarChart(
         "biDailyChart",
-        rows.map((r) => r.date.slice(5)),
-        [
-          {
-            name: "日消耗合计",
-            color: BI_CHART.series[0],
-            values: rows.map((r) => r.total),
-          },
-          {
-            name: "活跃卡消耗",
-            color: BI_CHART.series[1],
-            values: rows.map((r) => r.activeTotal),
-          },
-        ]
+        rows.map((r) => ({
+          label: r.date,
+          short: r.date.slice(5),
+          value: r.total,
+        }))
       );
 
       const tbody = document.getElementById("biDailyTableBody");
       if (!rows.length) {
         tbody.innerHTML =
-          '<tr><td colspan="8" style="text-align:center;color:rgba(0,0,0,0.45);padding:40px 16px;">暂无数据</td></tr>';
+          '<tr><td colspan="5" style="text-align:center;color:rgba(0,0,0,0.45);padding:40px 16px;">暂无数据</td></tr>';
       } else {
         tbody.innerHTML = rows
           .slice()
@@ -4486,9 +4397,6 @@
             <td class="num">${r.cardCount}</td>
             <td class="num">$${formatAmount(r.avgPerCard)}</td>
             <td class="num ${changeClass(r.change)}">${formatChange(r.change)}</td>
-            <td class="num">${r.activeCardCount}</td>
-            <td class="num">$${formatAmount(r.activeAvgPerCard)}</td>
-            <td class="num ${changeClass(r.activeChange)}">${formatChange(r.activeChange)}</td>
           </tr>`
           )
           .join("");
@@ -4664,27 +4572,19 @@
         },
       ]);
 
-      renderGroupedBarChart(
+      renderBarChart(
         "biMonthlyChart",
-        rows.map((r) => Number(r.month.slice(5, 7)) + "月"),
-        [
-          {
-            name: "月消耗合计",
-            color: BI_CHART.series[0],
-            values: rows.map((r) => r.total),
-          },
-          {
-            name: "活跃卡消耗",
-            color: BI_CHART.series[1],
-            values: rows.map((r) => r.activeTotal),
-          },
-        ]
+        rows.map((r) => ({
+          label: r.monthLabel,
+          short: Number(r.month.slice(5, 7)) + "月",
+          value: r.total,
+        }))
       );
 
       const tbody = document.getElementById("biMonthlyTableBody");
       if (!rows.length) {
         tbody.innerHTML =
-          '<tr><td colspan="9" style="text-align:center;color:rgba(0,0,0,0.45);padding:40px 16px;">暂无数据</td></tr>';
+          '<tr><td colspan="6" style="text-align:center;color:rgba(0,0,0,0.45);padding:40px 16px;">暂无数据</td></tr>';
       } else {
         tbody.innerHTML = rows
           .slice()
@@ -4698,9 +4598,6 @@
             <td class="num">$${formatAmount(r.avgDaily)}</td>
             <td class="num">${r.cardCount}</td>
             <td class="num ${changeClass(r.change)}">${formatChange(r.change)}</td>
-            <td class="num">${r.activeCardCount}</td>
-            <td class="num">$${formatAmount(r.activeAvgPerCard)}</td>
-            <td class="num ${changeClass(r.activeChange)}">${formatChange(r.activeChange)}</td>
           </tr>`
           )
           .join("");
