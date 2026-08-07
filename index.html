@@ -1251,29 +1251,6 @@
       color: #5A7A94 !important;
     }
 
-    .slash-table .qc-summary td {
-      background: #EEF3F6;
-      font-weight: 600;
-      color: #3D4F5F;
-    }
-
-    .slash-table .qc-result td {
-      background: #D5E0E8;
-      font-weight: 650;
-      color: #3D4F5F;
-    }
-
-    .slash-table .qc-event td {
-      background: #fff;
-    }
-
-    .quota-change-hint {
-      margin: 0 0 12px;
-      font-size: 13px;
-      color: var(--text-tertiary);
-      line-height: 1.6;
-    }
-
     .bi-chart-legend {
       display: flex;
       flex-wrap: wrap;
@@ -1686,7 +1663,7 @@
             <span>密钥信息配置</span>
           </div>
         </div>
-        <div class="sidebar-footer">v1.4.0</div>
+        <div class="sidebar-footer">v1.4.1</div>
       </aside>
 
       <div class="main-wrap">
@@ -2044,7 +2021,7 @@
           <main class="page-body">
             <div class="page-header">
               <h1 class="page-title">BI统计</h1>
-              <p class="page-desc">查看日/月消耗、卡使用、卡申请与额度变化等统计</p>
+              <p class="page-desc">查看日/月消耗、卡使用与卡申请等统计</p>
             </div>
 
             <div class="bi-tabs" role="tablist">
@@ -2052,7 +2029,6 @@
               <button type="button" class="bi-tab" data-bi-tab="monthly" onclick="switchBiTab('monthly')">月度消耗情况</button>
               <button type="button" class="bi-tab" data-bi-tab="slash" onclick="switchBiTab('slash')">卡使用情况</button>
               <button type="button" class="bi-tab" data-bi-tab="apply" onclick="switchBiTab('apply')">卡申请统计</button>
-              <button type="button" class="bi-tab" data-bi-tab="quotaChange" onclick="switchBiTab('quotaChange')">额度变化表</button>
             </div>
 
             <div class="bi-panel active" id="bi-panel-daily">
@@ -2244,45 +2220,6 @@
                       </tr>
                     </thead>
                     <tbody id="biApplyTableBody"></tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <div class="bi-panel" id="bi-panel-quotaChange">
-              <div class="filter-card">
-                <form class="filter-grid" onsubmit="return searchBiQuotaChange(event)">
-                  <div class="filter-item">
-                    <label for="biQcFrom">增加申请日期（起）</label>
-                    <input id="biQcFrom" type="date" />
-                  </div>
-                  <div class="filter-item">
-                    <label for="biQcTo">增加申请日期（止）</label>
-                    <input id="biQcTo" type="date" />
-                  </div>
-                  <div class="filter-actions">
-                    <button type="submit" class="btn btn-primary">查询</button>
-                    <button type="button" class="btn btn-default" onclick="resetBiQuotaChange()">重置</button>
-                  </div>
-                </form>
-              </div>
-
-              <div class="bi-kpi-row" id="biQuotaChangeKpi"></div>
-
-              <div class="table-card" style="padding: 16px;">
-                <p class="quota-change-hint">
-                  表结构：预充值 / 核销为汇总项；「增加申请额度」可多笔按日期列出；可用剩余 = 预充值总额度 + 增加申请合计 + 核销金额。
-                </p>
-                <div class="table-scroll">
-                  <table class="slash-table slash-table-compact">
-                    <thead>
-                      <tr>
-                        <th>日期</th>
-                        <th>额度类型</th>
-                        <th>金额</th>
-                      </tr>
-                    </thead>
-                    <tbody id="biQuotaChangeTableBody"></tbody>
                   </table>
                 </div>
               </div>
@@ -3889,24 +3826,7 @@
       slashTo: "",
       applyFrom: "",
       applyTo: "",
-      qcFrom: "",
-      qcTo: "",
     };
-
-    // 额度变化表 mock
-    // 汇总项：预充值总额度、核销金额；明细项：增加申请额度（可多笔）
-    // 可用剩余 = 预充值总额度 + Σ增加申请额度 + 核销金额
-    const quotaChangeSummary = {
-      prepaid: 430438.51,
-      writeOff: 4468843.65,
-    };
-    const quotaIncreaseEvents = [
-      { date: "2026-03-12", amount: 200000 },
-      { date: "2026-04-27", amount: 500000 },
-      { date: "2026-05-25", amount: 500000 },
-      { date: "2026-06-18", amount: 350000 },
-      { date: "2026-07-08", amount: 280000 },
-    ];
 
     // 卡申请统计 mock（每日申请卡数）
     const cardApplyAllData = [];
@@ -3987,7 +3907,6 @@
       document.getElementById("bi-panel-monthly").classList.toggle("active", tab === "monthly");
       document.getElementById("bi-panel-slash").classList.toggle("active", tab === "slash");
       document.getElementById("bi-panel-apply").classList.toggle("active", tab === "apply");
-      document.getElementById("bi-panel-quotaChange").classList.toggle("active", tab === "quotaChange");
       renderBi();
     }
 
@@ -4021,11 +3940,6 @@
       biState.applyTo = applyRange.to;
       document.getElementById("biApplyFrom").value = applyRange.from;
       document.getElementById("biApplyTo").value = applyRange.to;
-
-      biState.qcFrom = "";
-      biState.qcTo = "";
-      document.getElementById("biQcFrom").value = "";
-      document.getElementById("biQcTo").value = "";
     }
 
     function searchBiDaily(e) {
@@ -4116,33 +4030,10 @@
       renderBiApply();
     }
 
-    function searchBiQuotaChange(e) {
-      if (e && e.preventDefault) e.preventDefault();
-      const from = document.getElementById("biQcFrom").value;
-      const to = document.getElementById("biQcTo").value;
-      if (from && to && from > to) {
-        showToast("日期起不能晚于止");
-        return false;
-      }
-      biState.qcFrom = from;
-      biState.qcTo = to;
-      renderBiQuotaChange();
-      return false;
-    }
-
-    function resetBiQuotaChange() {
-      document.getElementById("biQcFrom").value = "";
-      document.getElementById("biQcTo").value = "";
-      biState.qcFrom = "";
-      biState.qcTo = "";
-      renderBiQuotaChange();
-    }
-
     function renderBi() {
       if (biState.tab === "monthly") renderBiMonthly();
       else if (biState.tab === "slash") renderBiSlash();
       else if (biState.tab === "apply") renderBiApply();
-      else if (biState.tab === "quotaChange") renderBiQuotaChange();
       else renderBiDaily();
     }
 
@@ -4568,81 +4459,6 @@
           })
           .join("");
       }
-    }
-
-    function renderBiQuotaChange() {
-      const events = quotaIncreaseEvents
-        .filter((e) => {
-          if (biState.qcFrom && e.date < biState.qcFrom) return false;
-          if (biState.qcTo && e.date > biState.qcTo) return false;
-          return true;
-        })
-        .slice()
-        .sort((a, b) => a.date.localeCompare(b.date));
-
-      const increaseSum = events.reduce((s, e) => s + e.amount, 0);
-      const available =
-        Math.round(
-          (quotaChangeSummary.prepaid + increaseSum + quotaChangeSummary.writeOff) * 100
-        ) / 100;
-
-      renderBiKpi("biQuotaChangeKpi", [
-        {
-          label: "预充值总额度",
-          value: "$" + formatAmount(quotaChangeSummary.prepaid),
-        },
-        {
-          label: "增加申请合计",
-          value: "$" + formatAmount(increaseSum),
-          accent: true,
-        },
-        {
-          label: "核销金额",
-          value: "$" + formatAmount(quotaChangeSummary.writeOff),
-        },
-        {
-          label: "可用剩余",
-          value: "$" + formatAmount(available),
-        },
-      ]);
-
-      const tbody = document.getElementById("biQuotaChangeTableBody");
-      let html = "";
-      html += `
-        <tr class="qc-summary">
-          <td>—</td>
-          <td>预充值总额度</td>
-          <td class="num">$${formatAmount(quotaChangeSummary.prepaid)}</td>
-        </tr>`;
-
-      if (!events.length) {
-        html += `
-        <tr class="qc-event">
-          <td colspan="3" style="text-align:center;color:rgba(0,0,0,0.45);">当前区间暂无增加申请额度记录</td>
-        </tr>`;
-      } else {
-        events.forEach((e) => {
-          html += `
-        <tr class="qc-event">
-          <td>${e.date}</td>
-          <td>增加申请额度</td>
-          <td class="num">$${formatAmount(e.amount)}</td>
-        </tr>`;
-        });
-      }
-
-      html += `
-        <tr class="qc-summary">
-          <td>—</td>
-          <td>核销金额</td>
-          <td class="num">$${formatAmount(quotaChangeSummary.writeOff)}</td>
-        </tr>
-        <tr class="qc-result">
-          <td>—</td>
-          <td>可用剩余</td>
-          <td class="num">$${formatAmount(available)}</td>
-        </tr>`;
-      tbody.innerHTML = html;
     }
 
     function renderBiMonthly() {
